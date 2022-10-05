@@ -1,10 +1,14 @@
 from django.shortcuts import render
+
 from .serializers import UserSerializer, MessageSerializer
 from rest_framework import viewsets
 from .models import User, Message
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import UserRateThrottle
+
+
+
 
 class UserViewSet(viewsets.ModelViewSet):
  queryset = User.objects.all()
