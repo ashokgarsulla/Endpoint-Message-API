@@ -19,12 +19,13 @@ from django.urls import path,include
 from api import views
 from rest_framework.routers import DefaultRouter 
 from rest_framework.authtoken.views import obtain_auth_token
-
+from api.auth import CustomAuthToken
 router = DefaultRouter()
 router.register('message',views.MessageViewSet, basename='message')
 router.register('user',views.UserViewSet, basename='user')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include(router.urls)),
-    path('gettoken/',obtain_auth_token)
+    path('gettoken/',obtain_auth_token),
+    path('custtoken/',CustomAuthToken.as_view())
 ]
